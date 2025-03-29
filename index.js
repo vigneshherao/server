@@ -17,6 +17,15 @@ app.use(cors(corsOptions));
 
 const NEWS_API_URL = "https://newsapi.org/v2/top-headlines?country=us";
 
+app.get("/hai", async (req, res) => {
+  try {
+    res.send("hodsfhlkjl");
+  } catch (error) {
+    console.error("Error fetching news:", error);
+    res.status(500).json({ error: `Server errosssr ${error}` });
+  }
+});
+
 app.get("/api/news", async (req, res) => {
   try {
     const response = await axios.get(
@@ -30,7 +39,7 @@ app.get("/api/news", async (req, res) => {
     res.json(response.data);
   } catch (error) {
     console.error("Error fetching news:", error);
-    res.status(500).json({ error: `Server error ${error}` });
+    res.status(500).json({ error: `Server errosssr ${error}` });
   }
 });
 
