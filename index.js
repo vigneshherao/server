@@ -39,7 +39,10 @@ app.get("/api/news", async (req, res) => {
     res.json(response.data);
   } catch (error) {
     console.error("Error fetching news:", error);
-    res.status(500).json({ error: `Server errosssr ${error}` });
+    res.status(error.response?.status || 500).json({
+      error: "Server error",
+      details: error.message,
+    });
   }
 });
 
